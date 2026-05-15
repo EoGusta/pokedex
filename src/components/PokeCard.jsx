@@ -1,12 +1,10 @@
-function PokeCard() {
+function PokeCard({ id, name, type, imageUrl}) {
   return (
-    <div>
-      <img className="imagem-temp"
-        src="src/assets/substituto.png"
-        alt="Substituto"
-      />
-      <h2>#??? — ???</h2>
-      <p>Tipo: ???</p>
+    <div className='pokecard'>
+      <img src={imageUrl} alt={name}/>
+
+      <h2>#{String(id).padStart(3, '0')} — {name}</h2>
+      <p>Tipo: {type}</p>
     </div>
   )
 }

@@ -1,6 +1,6 @@
-function Navbar() {
+function PokeNav() {
   return (
-    <nav>
+    <nav className='pokenav'>
       <a href="#">Início</a>
       <a href="#">Pokémon</a>
       <a href="#">Sobre</a>
@@ -8,4 +8,4 @@ function Navbar() {
   )
 }
 
-export default Navbar
+export default PokeNav

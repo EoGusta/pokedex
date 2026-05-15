@@ -1,7 +1,7 @@
 function Rodape() {
   return (
-    <footer>
-      <p>Desenvolvido por [Gustavo Costa] — Programação Frontend — UNIVAS</p>
+    <footer className='rodape'>
+      <p>Desenvolvido por [Gustavo Costa] — Programaçao Frontend — UNIVAS</p>
     </footer>
   )
 }
