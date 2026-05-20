@@ -1,9 +1,13 @@
+import { NavLink } from 'react-router-dom'
+
 function PokeNav() {
   return (
     <nav className='pokenav'>
-      <a href="#">Início</a>
-      <a href="#">Pokémon</a>
-      <a href="#">Sobre</a>
+      <div>
+        <NavLink to="/" end>Início</NavLink>
+        <NavLink to="/pokemon">Pokémon</NavLink>
+        <NavLink to="/sobre">Sobre</NavLink>
+      </div>
     </nav>
   )
 }

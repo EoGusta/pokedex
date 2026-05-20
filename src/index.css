@@ -71,12 +71,24 @@ img {
 }
 
 /* Header */
+
+.logo {
+  width: 2.75rem;
+  height: 2.75rem;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  
+}
+
 .cabecalho {
   padding: 0.85rem 1.25rem;
   background: linear-gradient(135deg, #02a675 0%);
   color: #fff;
   box-shadow: var(--shadow-md);
-
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  gap: 20px;
 }
 
 .cabecalho__inner {
@@ -117,6 +129,7 @@ img {
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(28, 33, 48, 0.08);
   box-shadow: var(--shadow-sm);
+  justify-content: center;
 }
 
 .pokenav__inner {
@@ -258,10 +271,8 @@ img {
 
 .pokemon-grid {
   display: grid;
-  /* Reduzi de 240px para 160px para caberem mais colunas */
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); 
-  gap: 1rem;             /* Espaçamento entre os cards */
-  justify-items: center; /* Centraliza os cards dentro das colunas */
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Aumentei um pouco o mínimo para acomodar o conteúdo */
+  gap: 1.25rem;
 }
 
 .pokemon-catalog__empty {
@@ -283,8 +294,10 @@ img {
   border: 1px solid rgba(28, 33, 48, 0.06);
   box-shadow: var(--shadow-card);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  margin: 10px;           
-  max-width: 250px;
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Força todos os cards a terem a altura máxima da linha */
+  width: 100%;
 }
 
 .pokecard:hover {
@@ -337,6 +350,24 @@ img {
   font-weight: 600;
   color: var(--color-accent);
   background: var(--color-accent-soft);
+}
+
+a.pokecard, 
+.pokemon-grid a {
+  text-decoration: none; /* Remove o sublinhado padrão de links */
+  color: inherit;        /* Força a herdar o --color-text do body */
+  display: flex;         /* Mantém o comportamento de bloco/flex do card */
+}
+
+.home-titulo {
+  width: 100vw; /* 100% da largura da janela */
+  height: 100vh; /* 100% da altura da janela */
+}
+
+.app-about__card {
+ display: flex;
+    align-items: center; /* Centraliza verticalmente */
+    gap: 20px;
 }
 
 @font-face {
