@@ -1,11 +1,38 @@
 import { Link, useParams } from 'react-router-dom'
-import { getPokemonById } from '../data/pokemons'
+import { useEffect, useState } from 'react'
+import { fetchPokemonById } from '../services/pokemonApi'
 
 function PokemonDetailPage() {
   const { id } = useParams()
-  const {name} = useParams()
-  const pokemon = getPokemonById(id)
+  const [pokemon, setPokemon] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
 
+  useEffect(() => {
+    let cancelled = false
+
+    async function loadPokemon() {
+      try {
+        setLoading(true)
+        setError(null)
+        setPokemon(null)
+        const data = await fetchPokemonById (id)
+        if (!cancelled) setPokemon(data)
+      } catch (err) {
+        if (!cancelled) setError(err.message ?? 'Erro ao carregar')
+      } finally {
+        if (!cancelled) setLoading(false)
+      }
+    }
+
+      loadPokemon()
+      return () => {
+        cancelled = true
+      }
+  }, [id])
+
+  if (loading) {return <p>Carregando Pokémon...</p>}
+  if (error) {return <p role="alert">{error}</p>}
   if (!pokemon) {
     return (
       <section className="pokemon-detail pokemon-detail--empty">

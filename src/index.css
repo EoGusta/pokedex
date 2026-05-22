@@ -171,10 +171,13 @@ img {
 
 .app-about__card {
   background: var(--color-surface);
-  border-radius: var(--radius-lg);
   padding: 1.5rem 1.75rem;
-  box-shadow: var(--shadow-card);
-  border: 1px solid rgba(28, 33, 48, 0.06);
+  justify-content: center;
+}
+
+.app-about__card__cima {
+  background: var(--color-surface);
+  padding: 1.5rem 1.75rem;
 }
 
 .app-about__card h2 {
@@ -187,6 +190,11 @@ img {
   margin: 0;
   color: var(--color-text-muted);
   font-size: 0.95rem;
+}
+
+.ranger {
+  width: 500px;
+  height: 500px;
 }
 
 /* Footer */
@@ -359,7 +367,7 @@ a.pokecard,
   display: flex;         /* Mantém o comportamento de bloco/flex do card */
 }
 
-.home-titulo {
+.inicio {
   width: 100vw; /* 100% da largura da janela */
   height: 100vh; /* 100% da altura da janela */
 }
@@ -368,6 +376,548 @@ a.pokecard,
  display: flex;
     align-items: center; /* Centraliza verticalmente */
     gap: 20px;
+}
+
+/* Detalhes de Pokemon */
+.pokemon-detail {
+  max-width: 700px;
+  margin: 1.5rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  animation: fadeInDetail 0.3s ease-out;
+}
+
+/* Botão "← Voltar ao catálogo" */
+.pokemon-detail__back {
+  align-self: flex-start; /* Impede o botão de esticar a largura toda */
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(28, 33, 48, 0.06);
+  transition: all 0.2s ease;
+}
+
+.pokemon-detail__back:hover {
+  color: var(--color-text);
+  background: var(--color-surface);
+  transform: translateX(-4px); /* Efeito sutil de empurrão para a esquerda */
+  box-shadow: var(--shadow-sm);
+}
+
+/* Card Principal de Detalhes */
+.pokemon-detail__card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(28, 33, 48, 0.06);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Responsivo: Lado a lado em telas maiores */
+@media (min-width: 580px) {
+  .pokemon-detail__card {
+    flex-direction: row;
+    min-height: 280px;
+  }
+}
+
+/* Container da Imagem */
+.pokemon-detail__media {
+  background: linear-gradient(180deg, #f4f6fb 0%, #e8ecf4 100%);
+  padding: 2rem;
+  display: grid;
+  place-items: center;
+  border-bottom: 1px solid rgba(28, 33, 48, 0.05);
+}
+
+@media (min-width: 580px) {
+  .pokemon-detail__media {
+    border-bottom: none;
+    border-right: 1px solid rgba(28, 33, 48, 0.05);
+    width: 260px; /* Largura fixa para a imagem em telas maiores */
+    flex-shrink: 0;
+  }
+}
+
+.pokemon-detail__media img {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  filter: drop-shadow(0 10px 15px rgba(28, 33, 48, 0.15));
+  transition: transform 0.3s ease;
+}
+
+/* Efeito divertido: aproxima o Pokémon de leve ao passar o mouse no card */
+.pokemon-detail__card:hover .pokemon-detail__media img {
+  transform: scale(1.08);
+}
+
+/* Conteúdo do Card (Texto) */
+.pokemon-detail__body {
+  padding: 1.75rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  justify-content: center;
+}
+
+/* Título: ex: #001 — Bulbasaur */
+.pokemon-detail__body h2 {
+  margin: 0;
+  font-size: clamp(1.4rem, 4vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+
+/* Tipo */
+.pokemon-detail__type {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.pokemon-detail__type span {
+  display: inline-block;
+  margin-left: 0.35rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+  text-transform: capitalize;
+}
+
+/* Descrição Pokédex */
+.pokemon-detail {
+  max-width: 700px;
+  margin: 1.5rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  animation: fadeInDetail 0.3s ease-out;
+}
+
+/* Botão "← Voltar ao catálogo" */
+.pokemon-detail__back {
+  align-self: flex-start; /* Impede o botão de esticar a largura toda */
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(28, 33, 48, 0.06);
+  transition: all 0.2s ease;
+}
+
+.pokemon-detail__back:hover {
+  color: var(--color-text);
+  background: var(--color-surface);
+  transform: translateX(-4px); /* Efeito sutil de empurrão para a esquerda */
+  box-shadow: var(--shadow-sm);
+}
+
+/* Card Principal de Detalhes */
+.pokemon-detail__card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(28, 33, 48, 0.06);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Responsivo: Lado a lado em telas maiores */
+@media (min-width: 580px) {
+  .pokemon-detail__card {
+    flex-direction: row;
+    min-height: 280px;
+  }
+}
+
+/* Container da Imagem */
+.pokemon-detail__media {
+  background: linear-gradient(180deg, #f4f6fb 0%, #e8ecf4 100%);
+  padding: 2rem;
+  display: grid;
+  place-items: center;
+  border-bottom: 1px solid rgba(28, 33, 48, 0.05);
+}
+
+@media (min-width: 580px) {
+  .pokemon-detail__media {
+    border-bottom: none;
+    border-right: 1px solid rgba(28, 33, 48, 0.05);
+    width: 260px; /* Largura fixa para a imagem em telas maiores */
+    flex-shrink: 0;
+  }
+}
+
+.pokemon-detail__media img {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  filter: drop-shadow(0 10px 15px rgba(28, 33, 48, 0.15));
+  transition: transform 0.3s ease;
+}
+
+/* Efeito divertido: aproxima o Pokémon de leve ao passar o mouse no card */
+.pokemon-detail__card:hover .pokemon-detail__media img {
+  transform: scale(1.08);
+}
+
+/* Conteúdo do Card (Texto) */
+.pokemon-detail__body {
+  padding: 1.75rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  justify-content: center;
+}
+
+/* Título: ex: #001 — Bulbasaur */
+.pokemon-detail__body h2 {
+  margin: 0;
+  font-size: clamp(1.4rem, 4vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+
+/* Tipo */
+.pokemon-detail__type {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.pokemon-detail__type span {
+  display: inline-block;
+  margin-left: 0.35rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+  text-transform: capitalize;
+}
+
+/* Descrição Pokédex */
+.pokemon-detail {
+  max-width: 700px;
+  margin: 1.5rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  animation: fadeInDetail 0.3s ease-out;
+}
+
+/* Botão "← Voltar ao catálogo" */
+.pokemon-detail__back {
+  align-self: flex-start; /* Impede o botão de esticar a largura toda */
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(28, 33, 48, 0.06);
+  transition: all 0.2s ease;
+}
+
+.pokemon-detail__back:hover {
+  color: var(--color-text);
+  background: var(--color-surface);
+  transform: translateX(-4px); /* Efeito sutil de empurrão para a esquerda */
+  box-shadow: var(--shadow-sm);
+}
+
+/* Card Principal de Detalhes */
+.pokemon-detail__card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(28, 33, 48, 0.06);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Responsivo: Lado a lado em telas maiores */
+@media (min-width: 580px) {
+  .pokemon-detail__card {
+    flex-direction: row;
+    min-height: 280px;
+  }
+}
+
+/* Container da Imagem */
+.pokemon-detail__media {
+  background: linear-gradient(180deg, #f4f6fb 0%, #e8ecf4 100%);
+  padding: 2rem;
+  display: grid;
+  place-items: center;
+  border-bottom: 1px solid rgba(28, 33, 48, 0.05);
+}
+
+@media (min-width: 580px) {
+  .pokemon-detail__media {
+    border-bottom: none;
+    border-right: 1px solid rgba(28, 33, 48, 0.05);
+    width: 260px; /* Largura fixa para a imagem em telas maiores */
+    flex-shrink: 0;
+  }
+}
+
+.pokemon-detail__media img {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  filter: drop-shadow(0 10px 15px rgba(28, 33, 48, 0.15));
+  transition: transform 0.3s ease;
+}
+
+/* Efeito divertido: aproxima o Pokémon de leve ao passar o mouse no card */
+.pokemon-detail__card:hover .pokemon-detail__media img {
+  transform: scale(1.08);
+}
+
+/* Conteúdo do Card (Texto) */
+.pokemon-detail__body {
+  padding: 1.75rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  justify-content: center;
+}
+
+/* Título: ex: #001 — Bulbasaur */
+.pokemon-detail__body h2 {
+  margin: 0;
+  font-size: clamp(1.4rem, 4vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+
+/* Tipo */
+.pokemon-detail__type {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.pokemon-detail__type span {
+  display: inline-block;
+  margin-left: 0.35rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+  text-transform: capitalize;
+}
+
+/* Descrição Pokédex */
+/* ==========================================================================
+   PÁGINA DE DETALHES DO POKÉMON (.pokemon-detail)
+   ========================================================================== */
+
+.pokemon-detail {
+  max-width: 700px;
+  margin: 1.5rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  animation: fadeInDetail 0.3s ease-out;
+}
+
+/* Botão "← Voltar ao catálogo" */
+.pokemon-detail__back {
+  align-self: flex-start; /* Impede o botão de esticar a largura toda */
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(28, 33, 48, 0.06);
+  transition: all 0.2s ease;
+}
+
+.pokemon-detail__back:hover {
+  color: var(--color-text);
+  background: var(--color-surface);
+  transform: translateX(-4px); /* Efeito sutil de empurrão para a esquerda */
+  box-shadow: var(--shadow-sm);
+}
+
+/* Card Principal de Detalhes */
+.pokemon-detail__card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(28, 33, 48, 0.06);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Responsivo: Lado a lado em telas maiores */
+@media (min-width: 580px) {
+  .pokemon-detail__card {
+    flex-direction: row;
+    min-height: 280px;
+  }
+}
+
+/* Container da Imagem */
+.pokemon-detail__media {
+  background: linear-gradient(180deg, #f4f6fb 0%, #e8ecf4 100%);
+  padding: 2rem;
+  display: grid;
+  place-items: center;
+  border-bottom: 1px solid rgba(28, 33, 48, 0.05);
+}
+
+@media (min-width: 580px) {
+  .pokemon-detail__media {
+    border-bottom: none;
+    border-right: 1px solid rgba(28, 33, 48, 0.05);
+    width: 260px; /* Largura fixa para a imagem em telas maiores */
+    flex-shrink: 0;
+  }
+}
+
+.pokemon-detail__media img {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  filter: drop-shadow(0 10px 15px rgba(28, 33, 48, 0.15));
+  transition: transform 0.3s ease;
+}
+
+/* Efeito divertido: aproxima o Pokémon de leve ao passar o mouse no card */
+.pokemon-detail__card:hover .pokemon-detail__media img {
+  transform: scale(1.08);
+}
+
+/* Conteúdo do Card (Texto) */
+.pokemon-detail__body {
+  padding: 1.75rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  justify-content: center;
+}
+
+/* Título: ex: #001 — Bulbasaur */
+.pokemon-detail__body h2 {
+  margin: 0;
+  font-size: clamp(1.4rem, 4vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+
+/* Tipo */
+.pokemon-detail__type {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.pokemon-detail__type span {
+  display: inline-block;
+  margin-left: 0.35rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+  text-transform: capitalize;
+}
+
+/* Descrição Pokédex */
+.pokemon-detail__desc {
+  margin: 0.5rem 0 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+}
+
+/* ==========================================================================
+   ESTADO: Pokémon Não Encontrado (Erro 404)
+   ========================================================================== */
+
+.pokemon-detail--empty {
+  text-align: center;
+  align-items: center;
+  padding: 3rem 1.5rem;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px dashed rgba(28, 33, 48, 0.15);
+  box-shadow: var(--shadow-sm);
+}
+
+.pokemon-detail--empty h2 {
+  margin: 0 0 0.5rem;
+  color: var(--color-text);
+  font-size: 1.4rem;
+}
+
+.pokemon-detail--empty p {
+  margin: 0 0 1.5rem;
+  color: var(--color-text-muted);
+}
+
+.pokemon-detail--empty .pokemon-detail__back {
+  align-self: center;
+  background: var(--color-accent);
+  color: #ffffff;
+  border: none;
+}
+
+.pokemon-detail--empty .pokemon-detail__back:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Animação de entrada da página */
+@keyframes fadeInDetail {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @font-face {
